@@ -37,4 +37,11 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("androidx.biometric:biometric:1.0.1")
+    // AndroidX
+    implementation ("androidx.appcompat:appcompat:1.4.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.google.android.material:material:1.4.0")
+
+    // Android Keystore
+    implementation ("androidx.security:security-crypto:1.1.0-alpha03")
 }
