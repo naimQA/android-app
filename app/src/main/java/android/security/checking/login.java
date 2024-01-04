@@ -1,6 +1,7 @@
 package android.security.checking;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +20,6 @@ import java.util.concurrent.Executor;
 
 import javax.crypto.SecretKey;
 
-import static android.security.checking.CryptoUtils.decryptData;
-import static android.security.checking.CryptoUtils.getStoredEncryptedPassword;
-import static android.security.checking.CryptoUtils.getSecretKey;
 
 public class login extends AppCompatActivity {
 
@@ -34,6 +32,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         nMain = findViewById(R.id.main);
+        CryptoUtils cryptoUtils = new CryptoUtils();
 
         BiometricManager biometricManager = BiometricManager.from(this);
         switch (biometricManager.canAuthenticate()) {
@@ -82,36 +81,53 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Get user input
-                String enteredUsername = ((EditText) findViewById(R.id.loginEmail)).getText().toString();
+                String enteredUsername = ((EditText) findViewById(R.id.loginUserName)).getText().toString();
                 String enteredPassword = ((EditText) findViewById(R.id.loginPassword)).getText().toString();
 
                 // Retrieve stored data from SharedPreferences
                 String storedUsername = getStoredUsername(login.this);
-                String storedEmail = getStoredEmail(login.this);
                 String storedEncryptedPassword = getStoredEncryptedPassword(login.this);
+                //SecretKey secretKey = cryptoUtils.getSecretKey();
 
                 // Decrypt stored password
-                String storedPassword = decryptData(storedEncryptedPassword, getSecretKey(login.this));
+                String storedPassword = cryptoUtils.decryptData(storedEncryptedPassword);
 
                 // Compare entered and stored credentials
                 if (enteredUsername.equals(storedUsername) && enteredPassword.equals(storedPassword)) {
                     // Login successful
+                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
                     // Proceed with login logic...
                 } else {
                     // Login failed
+                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
                     // Handle failed login...
                 }
             }
         });
+        // Handle registration button click
+        Button registerButton = findViewById(R.id.regBtn);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to start the RegistrationActivity
+                Intent intent = new Intent(login.this, registration.class);
+
+                // Start the RegistrationActivity
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     // Add these methods for getting stored data from SharedPreferences
-    public static String getStoredEmail(Context context) {
+
+    private String getStoredEncryptedPassword(Context context){
         SharedPreferences preferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE);
-        return preferences.getString("email", "");
+        return preferences.getString("encryptedPassword", "");
     }
 
-    public static String getStoredUsername(Context context) {
+    private String getStoredUsername(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("UserData", Context.MODE_PRIVATE);
         return preferences.getString("userName", "");
     }

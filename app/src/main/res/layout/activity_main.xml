@@ -77,16 +77,16 @@
                 android:text="Authenticate with Biometric"/>
 
             <TextView
-                android:id="@+id/loginEmail"
+                android:id="@+id/loginUserNameE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email Address"
+                android:text="User name"
                 android:alpha="0.7"/>
             <EditText
-                android:id="@+id/loginEmail"
+                android:id="@+id/loginUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"/>
+                android:inputType="text"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,15 +109,37 @@
                     android:alpha="0.7"/>
 
             </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/loginBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="15dp"
+                    android:backgroundTint="@color/design_default_color_secondary"
+                    android:text="Login"
+                    android:textSize="25dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textFontWeight="15"
+                    android:text="If you haven't registered yet"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/loginBtn"
+                android:id="@+id/regBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/RePassword"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="15dp"
                 android:backgroundTint="@color/design_default_color_secondary"
-                android:text="Login"
+                android:text="Register"
                 android:textSize="25dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
