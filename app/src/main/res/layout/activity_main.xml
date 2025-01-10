@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@drawable/background"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:id="@+id/main"
     tools:context=".login">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,11 +22,11 @@
         android:padding="28dp"
         android:gravity="center">
 
-
         <ImageView
             android:layout_width="72dp"
             android:layout_height="100dp"
-            android:src="@drawable/baseline_security_24"/>
+            android:src="@drawable/baseline_security_24" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,15 +34,15 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="32sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
     </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:cardCornerRadius="28dp"
-        android:layout_marginBottom="28dp"
-        >
+        android:layout_marginBottom="28dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,69 +50,73 @@
             android:orientation="vertical"
             android:padding="28dp">
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
                 android:textColor="@color/my_primary"
                 android:textSize="32sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Please login however you like"
-                android:alpha="0.7"
-                />
+                android:alpha="0.7" />
+
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp" />
 
-            <!-- Add this inside your CardView or wherever you want the BiometricPrompt to appear -->
             <Button
                 android:id="@+id/biometricButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Authenticate with Biometric"/>
+                android:text="Authenticate with Biometric" />
 
             <TextView
                 android:id="@+id/loginUserNameE"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="User name"
-                android:alpha="0.7"/>
+                android:alpha="0.7" />
+
             <EditText
                 android:id="@+id/loginUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:inputType="text" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password"
-                android:alpha="0.7"/>
+                android:alpha="0.7" />
+
             <EditText
                 android:id="@+id/loginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:drawableEnd="@drawable/password" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Remember me"
                     android:layout_centerVertical="true"
-                    android:alpha="0.7"/>
-
+                    android:alpha="0.7" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/loginBtn"
                     android:layout_width="wrap_content"
@@ -123,15 +126,15 @@
                     android:backgroundTint="@color/design_default_color_secondary"
                     android:text="Login"
                     android:textSize="25dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textFontWeight="15"
                     android:text="If you haven't registered yet"
-                    android:layout_marginTop="10dp"/>
-
+                    android:layout_marginTop="10dp" />
             </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/regBtn"
                 android:layout_width="wrap_content"
@@ -141,7 +144,15 @@
                 android:backgroundTint="@color/design_default_color_secondary"
                 android:text="Register"
                 android:textSize="25dp" />
+
+            <!-- Nouveau bouton pour voir la liste des utilisateurs -->
+            <Button
+                android:id="@+id/viewUsersBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Registered Users"
+                android:layout_marginTop="16dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+</RelativeLayout>
